@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.assingment.etho.ui.server.ServerHomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="32dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/bottomButtons"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_event_text" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/requestVideoView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.sendRecordVideoRequest()}"
+                android:padding="16dp"
+                android:text="Request Video"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/captureImageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/captureImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.sendCaptureImageRequest()}"
+                android:padding="16dp"
+                android:text="Capture Picture"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/navigationInstructionView"
+                app:layout_constraintStart_toEndOf="@+id/requestVideoView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/navigationInstructionView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.openNavigationInstructionsDialog()}"
+                android:padding="8dp"
+                android:text="Navigation Instruction"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/requestMediaInfoView"
+                app:layout_constraintStart_toEndOf="@+id/captureImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UnusedAttribute" />
+
+
+            <TextView
+                android:id="@+id/requestMediaInfoView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.sendMediaInfoRequest()}"
+                android:padding="16dp"
+                android:text="Media Info"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/navigationInstructionView"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
