@@ -45,7 +45,7 @@ class ClientHomeViewModel @Inject constructor(
 
     private fun sendRecordedVideoEvent(recordVideoRequestEvent: RecordVideoRequestEvent) {
         safeLaunch {
-            dataManager.sendCapturedImage(recordVideoRequestEvent.id, getSampleVideo())
+            dataManager.sendRecordedVideo(recordVideoRequestEvent.id, getSampleVideo())
         }
     }
 
